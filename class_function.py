@@ -10,7 +10,7 @@ class OrderInjection:
         self._side = side
        
             
-    def order(self, config):
+    def _order(self, config):
          for k in config.keys():
             if k == self._doctor_name:
                 for k2 in config[k].keys():
@@ -31,7 +31,7 @@ class OrderInjection:
   
                                 
     def message(self, config, note=None):
-        order = self.order(config)
+        order = self._order(config)
         if order is not None:
             return f"\nคนไข้ VN {self._VN}\nนพ.{self._doctor_name} ฉีดยา {self._medication_input} และ {order[1]}\nตำแหน่ง {self._location_injection} ข้าง{self._side}  จัดท่า {order[3]}\nใช้เข็ม {order[0]} และ {order[2]} {note}"
         else:
